@@ -14,14 +14,14 @@ st.set_page_config(
 if "lang" not in st.session_state:
     st.session_state.lang = "English"
 
-with st.sidebar:
-    st.markdown("### Language / ভাষা")
-    st.session_state.lang = st.radio(
+st.markdown("### ⚙️ Language / ভাষা")
+st.session_state.lang = st.radio(
         "Select Language",
         ["English", "বাংলা"],
         index=0 if st.session_state.lang == "English" else 1,
+        horizontal=True,
         label_visibility="collapsed"
-    )
+)
 
 UI = {
     "English": {
@@ -333,7 +333,7 @@ if conflicts or ph_disjoint:
         st.warning(t["rescue_msg"])
     if ph_disjoint:
         st.error(t["ph_disjoint"].format(low=intersect_low, high=intersect_high))
-        
+
 # Step 4: Soil Calibration
 st.subheader(t["s4"])
 with st.container(border=True):
