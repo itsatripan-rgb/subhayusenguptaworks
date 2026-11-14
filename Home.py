@@ -104,10 +104,33 @@ for step_title, step_desc in t["steps"]:
         st.write(step_desc)
 
 st.divider()
+  # Launch Button to the Unified Pipeline Page
+st.markdown("""
+<style>
+[data-testid="stPageLink-NavLink"] {
+    background-color: #2e7d32 !important;
+    border: 2px solid #1b5e20 !important;
+    border-radius: 12px !important;
+    padding: 18px 24px !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3) !important;
+    transition: transform 0.15s ease, background-color 0.15s ease !important;
+}
+[data-testid="stPageLink-NavLink"]:hover {
+    background-color: #1b5e20 !important;
+    transform: translateY(-2px) !important;
+}
+[data-testid="stPageLink-NavLink"] p {
+    color: #ffffff !important;
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# Launch Button to the Unified Pipeline Page
 st.page_link(
     "pages/1_Biofertilizer_Recommendation.py",
-    label=t["cta"],
+    label=f"**{t['cta']}**",
     use_container_width=True
 )
