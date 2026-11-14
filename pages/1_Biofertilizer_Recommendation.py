@@ -28,7 +28,7 @@ UI = {
         "title": "🌱 Biofertilizer & Crop Compatibility Engine",
         "sub": "Deterministic Soil & Safety Screening + Gemini AI Formulation",
         "s1": "1. Crops & Bio-Waste Inputs",
-        "target_cat": "TargetCrop Category",
+        "target_cat": "Target Crop Category",
         "target_crops": "Select Target Crop(s) (Pick 2+ to check companion planting)",
         "scrap_cat": "Category of ingredients",
         "scrap_crops": "Select ingredients available",
