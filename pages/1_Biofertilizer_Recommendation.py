@@ -6,8 +6,8 @@ from google import genai
 load_dotenv()
 
 st.set_page_config(
-    page_title="EcoRoot AI — Unified Engine",
-    page_icon="🧪",
+    page_title="EcoRoot AI",
+    page_icon="🌱",
     layout="wide"
 )
 
@@ -15,7 +15,7 @@ if "lang" not in st.session_state:
     st.session_state.lang = "English"
 
 with st.sidebar:
-    st.markdown("### ⚙️ Language / ভাষা")
+    st.markdown("### Language / ভাষা")
     st.session_state.lang = st.radio(
         "Select Language",
         ["English", "বাংলা"],
@@ -25,94 +25,88 @@ with st.sidebar:
 
 UI = {
     "English": {
-        "title": "🧪 Unified Biofertilizer & Crop Compatibility Engine",
-        "sub": "5-Step Deterministic Screening + Gemini 3.8 Agronomist Formulation",
-        "s1": "Step 1: Crops & Kitchen Waste",
-        "target_cat": "Filter Target Crop Category",
-        "target_crops": "Select Target Crop(s) (Select 2+ across any category to check co-planting)",
-        "scrap_cat": "Crop Waste Source Category (Optional)",
-        "scrap_crops": "Select Crop Residue / Waste",
-        "kitchen_mat": "Select Available Kitchen & Garden Materials",
-        "other_in": "Describe any additional waste (e.g., banana peel, egg shells, meat)",
-        "s2": "Step 2: Biohazard and Safety Check",
-        "safe_ok": "Biohazard Screening Passed: No meat, dairy, oils, or non-biodegradables detected.",
-        "safe_err": "BIOHAZARD DETECTED ({items}): Attracts pathogens and pests. Execution halted immediately! Remove hazardous items to proceed.",
-        "s3": "Step 3: Companion Crop & Soil pH Analysis",
-        "no_crop": "Select at least one target crop in Step 1 to run compatibility checks.",
-        "conflict_hdr": "Antagonistic Crop Conflict Detected!",
-        "rescue_msg": "Rescue Strategy Triggered: Use root partitioning (separate beds/grow-bags) and targeted spot-feeding rather than shared trench fertilization.",
-        "no_conflict": "No known allelopathic or pest conflicts among selected crops.",
-        "ph_overlap": "Calculated Mathematical Soil pH Intersection: {low:.1f} – {high:.1f}",
-        "ph_disjoint": "Zero pH Overlap! Selected crops cannot share soil ({low:.1f} vs {high:.1f}). Rescue Strategy: Grow in partitioned containers with separate pH-buffered feeds.",
-        "s4": "Step 4: Soil pH Calibration ",
-        "soil_mode": "Select Soil pH Calibration Method",
+        "title": "🌱 Biofertilizer & Crop Compatibility Engine",
+        "sub": "Deterministic Soil & Safety Screening + Gemini AI Formulation",
+        "s1": "1. Crops & Bio-Waste Inputs",
+        "target_cat": "Crop Category",
+        "target_crops": "Select Target Crop(s) (Pick 2+ to check companion planting)",
+        "scrap_cat": "Farm Residue Category (Optional)",
+        "scrap_crops": "Select Crop Residue",
+        "kitchen_mat": "Kitchen & Garden Waste",
+        "other_in": "Other waste items (e.g., banana peel, cooked chicken bones, tea leaves)",
+        "s2": "2. Deterministic Safety Guardrails",
+        "safe_err": "BIOHAZARD BLOCKED ({items}): Raw animal waste, dairy, oils, and synthetics breed pathogens. Remove to continue.",
+        "bone_warn": "Thermal Pre-Processing Needed: Cooked bones detected. Do not steep in water. Boil off oil/salt -> char at high heat -> crush to powder.",
+        "s3": "3. Multi-Crop Compatibility Engine",
+        "no_crop": "Please select at least one target crop above.",
+        "conflict_hdr": "Crop Compatibility Conflict",
+        "rescue_msg": "Rescue Plan: Use root partitioning (separate grow-bags/beds) and spot-feeding.",
+        "ph_disjoint": "pH Mismatch! Selected crops have non-overlapping pH needs ({low:.1f} vs {high:.1f}). Plant in separate containers.",
+        "s4": "4. Soil pH Calibration",
+        "soil_mode": "Calibration Method",
         "modes": [
-            "Tested Soil pH (Known Value)",
-            "Interactive Vinegar & Baking Soda Triage",
-            "Unverified Soil (Safe-Mode Baseline: pH 6.5 + 1:10 Buffer)"
+            "Known Soil pH (Lab/Meter)",
+            "Vinegar & Baking Soda Fizz Test",
+            "Unknown Soil (Safe-Mode: pH 6.5 + 1:10 Dilution)"
         ],
-        "ph_num": "Enter Tested Soil pH",
-        "vinegar_q": "1. Add vinegar to soil sample: Does it fizz?",
-        "soda_q": "2. Add baking soda + water to soil sample: Does it fizz?",
+        "ph_num": "Soil pH Value",
+        "vinegar_q": "1. Does soil fizz with Vinegar?",
+        "soda_q": "2. Does soil fizz with Baking Soda + Water?",
         "yes_no": ["No", "Yes"],
-        "triage_alk": "Triage Result: Alkaline Soil (~pH 7.8). Recipe will emphasize mild organic acidifiers.",
-        "triage_acid": "Triage Result: Acidic Soil (~pH 5.2). Recipe will avoid acidic citrus/tea mixes.",
-        "triage_neut": "Triage Result: Neutral Soil (~pH 6.5). Balanced nutrient release.",
-        "safemode_info": "Safe-Mode Baseline Active: Defaulting to pH 6.5 with a mandatory 1:10 water dilution buffer.",
-        "ph_warn_low": "Soil pH ({ph}) is below the target crop window ({low:.1f}–{high:.1f}).",
-        "ph_warn_high": "Soil pH ({ph}) is above the target crop window ({low:.1f}–{high:.1f}).",
-        "ph_match": "Soil pH ({ph}) matches the target crop window ({low:.1f}–{high:.1f}).",
-        "s5": "Step 5: Visual Action Card",
-        "gen_btn": "⚡ Generate Verified Action Card",
-        "no_scrap": "Select at least one crop residue or kitchen scrap in Step 1.",
-        "spinner": "Formulating 3-step recipe via Gemini 3.8...",
-        "badge_safe": "STATUS BADGE: VERIFIED SAFE & COMPATIBLE",
-        "badge_rescue": "STATUS BADGE: RESCUE MODE (PARTITIONING + 1:10 BUFFER REQUIRED)"
+        "triage_alk": "Result: Alkaline Soil (~pH 7.8). Formulation will add mild organic acidifiers.",
+        "triage_acid": "Result: Acidic Soil (~pH 5.2). Formulation will buffer excess acidity.",
+        "triage_neut": "Result: Neutral Soil (~pH 6.5).",
+        "safemode_info": "Safe-Mode Active: Assuming pH 6.5 with mandatory 1:10 dilution buffer.",
+        "ph_warn_low": "Soil pH ({ph}) is too acidic for target window ({low:.1f}–{high:.1f}).",
+        "ph_warn_high": "Soil pH ({ph}) is too alkaline for target window ({low:.1f}–{high:.1f}).",
+        "s5": "5. Visual Action Card",
+        "gen_btn": "Generate Biofertilizer Protocol",
+        "no_scrap": "Select or type at least one waste material in Step 1.",
+        "spinner": "Generating custom agronomy protocol via Gemini AI...",
+        "badge_safe": "VERIFIED SAFE & COMPATIBLE",
+        "badge_rescue": "RESCUE MODE (PARTITIONING + 1:10 BUFFER)"
     },
     "বাংলা": {
-        "title": "🧪 সমন্বিত জৈব সার ও ফসল সামঞ্জস্যতা ইঞ্জিন",
-        "sub": "৫-ধাপের নিরাপত্তা যাচাই + Gemini 3.8 কৃষিবিদ ফর্মুলেশন",
-        "s1": "ধাপ ১: ফসল ও জৈব-বর্জ্য ইনপুট",
-        "target_cat": "লক্ষ্য ফসলের বিভাগ ফিল্টার করুন",
+        "title": "🌱 সমন্বিত জৈব সার ও ফসল সামঞ্জস্যতা ইঞ্জিন",
+        "sub": "নিরাপত্তা যাচাই + Gemini AI কৃষিবিদ ফর্মুলেশন",
+        "s1": "১. ফসল ও জৈব-বর্জ্য ইনপুট",
+        "target_cat": "ফসলের বিভাগ",
         "target_crops": "লক্ষ্য ফসল নির্বাচন করুন (সহ-চাষ যাচাই করতে একাধিক বাছুন)",
         "scrap_cat": "ফসলের বর্জ্যের বিভাগ (ঐচ্ছিক)",
-        "scrap_crops": "বর্জ্য হিসেবে ব্যবহৃত ফসল বাছুন",
-        "kitchen_mat": "রান্নাঘর ও বাগানের উপলব্ধ উপাদান বাছুন",
-        "other_in": "অন্য কোনো বর্জ্য থাকলে লিখুন (যেমন: কলার খোসা, ডিমের খোসা)",
-        "s2": "ধাপ ২: নিরাপত্তা গার্ডরেইল ও তাৎক্ষণিক বিরতি",
-        "safe_ok": "নিরাপত্তা যাচাই সফল: কোনো মাংস, দুগ্ধজাত পদার্থ, তেল বা প্লাস্টিক পাওয়া যায়নি।",
-        "safe_err": "জৈব-ঝুঁকি শনাক্ত হয়েছে ({items}): এটি রোগজীবাণু ও পোকামাকড় আকর্ষণ করে। প্রক্রিয়া তাৎক্ষণিকভাবে বন্ধ করা হলো!",
-        "s3": "ধাপ ৩: মাল্টি-ক্রপ সামঞ্জস্যতা ও pH ছেদ ইঞ্জিন",
-        "no_crop": "সামঞ্জস্যতা যাচাই করতে ধাপ ১-এ অন্তত একটি লক্ষ্য ফসল নির্বাচন করুন।",
-        "conflict_hdr": "ফসলের মধ্যে বিরোধপূর্ণ সম্পর্ক শনাক্ত হয়েছে!",
-        "rescue_msg": "বিকল্প কৌশল (Rescue Strategy): আলাদা বেড বা গ্রো-ব্যাগ (Partitioning) ব্যবহার করুন এবং প্রতিটি গাছের গোড়ায় আলাদাভাবে সার দিন (Spot-feeding)।",
-        "no_conflict": "নির্বাচিত ফসলগুলোর মধ্যে কোনো ক্ষতিকর প্রতিযোগিতা পাওয়া যায়নি।",
-        "ph_overlap": "সহ-চাষের গাণিতিক মাটির pH সীমা: {low:.1f} – {high:.1f}",
-        "ph_disjoint": "অসামঞ্জস্যপূর্ণ মাটির pH! নির্বাচিত ফসলগুলোর pH চাহিদা মেলে না ({low:.1f} বনাম {high:.1f})। বিকল্প কৌশল: আলাদা পাত্রে চাষ করুন।",
-        "s4": "ধাপ ৪: মাটির pH নির্ণয় ও সেফ-মোড বেসলাইন",
-        "soil_mode": "মাটির pH নির্ধারণের পদ্ধতি বেছে নিন",
+        "scrap_crops": "বর্জ্য হিসেবে ব্যবহৃত ফসল",
+        "kitchen_mat": "রান্নাঘর ও বাগানের উপাদান",
+        "other_in": "অন্য কোনো বর্জ্য (যেমন: কলার খোসা, রান্না করা মুরগির হাড়)",
+        "s2": "২. জৈব-নিরাপত্তা যাচাই",
+        "safe_err": "জৈব-ঝুঁকি শনাক্ত ({items}): কাঁচা মাংস, দুগ্ধজাত পদার্থ, তেল বা প্লাস্টিক রোগজীবাণু ছড়ায়। এটি সরান।",
+        "bone_warn": "তাপীয় প্রক্রিয়াকরণ প্রয়োজন: রান্না করা হাড় সরাসরি জলে পচাবেন না। ১০ মিনিট ফুটিয়ে তেল/মশলা দূর করুন -> আগুনে পুড়িয়ে ভস্ম/গুঁড়ো করুন।",
+        "s3": "৩. মাল্টি-ক্রপ সামঞ্জস্যতা ও pH",
+        "no_crop": "অনুগ্রহ করে ধাপ ১-এ অন্তত একটি ফসল নির্বাচন করুন।",
+        "conflict_hdr": "ফসলের মধ্যে বিরোধপূর্ণ সম্পর্ক শনাক্ত!",
+        "rescue_msg": "বিকল্প কৌশল: আলাদা বেড বা গ্রো-ব্যাগ ব্যবহার করুন এবং আলাদাভাবে সার দিন।",
+        "ph_disjoint": "অসামঞ্জস্যপূর্ণ মাটির pH! ফসলগুলোর pH চাহিদা মেলে না ({low:.1f} বনাম {high:.1f})। আলাদা পাত্রে চাষ করুন।",
+        "s4": "৪. মাটির pH নির্ণয়",
+        "soil_mode": "pH নির্ধারণের পদ্ধতি",
         "modes": [
             "পরীক্ষিত মাটির pH (জানা মান)",
-            "ঘরোয়া ভিনেগার ও বেকিং সোডা পরীক্ষা",
-            "অজানা মাটি (সেফ-মোড বেসলাইন: pH 6.5 + ১:১০ বাফার)"
+            "ভিনেগার ও বেকিং সোডা পরীক্ষা",
+            "অজানা মাটি (সেফ-মোড: pH 6.5 + ১:১০ বাফার)"
         ],
-        "ph_num": "পরীক্ষিত মাটির pH লিখুন",
-        "vinegar_q": "১. মাটিতে ভিনেগার দিলে কি বুদবুদ (fizz) ওঠে?",
+        "ph_num": "মাটির pH লিখুন",
+        "vinegar_q": "১. মাটিতে ভিনেগার দিলে কি বুদবুদ ওঠে?",
         "soda_q": "২. মাটিতে বেকিং সোডা ও জল দিলে কি বুদবুদ ওঠে?",
         "yes_no": ["না (No)", "হ্যাঁ (Yes)"],
-        "triage_alk": "পরীক্ষার ফলাফল: ক্ষারীয় মাটি (~pH 7.8)। হালকা অম্লীয় জৈব উপাদানে জোর দেওয়া হবে।",
-        "triage_acid": "পরীক্ষার ফলাফল: অম্লীয় মাটি (~pH 5.2)। অতিরিক্ত সাইট্রাস বা চাপাতা বর্জ্য এড়ানো হবে।",
-        "triage_neut": "পরীক্ষার ফলাফল: নিরপেক্ষ মাটি (~pH 6.5)। সুষম পুষ্টি প্রদান করবে।",
-        "safemode_info": "সেফ-মোড বেসলাইন সক্রিয়: pH 6.5 এবং বাধ্যতামূলক ১:১০ জলের অনুপাত নির্ধারণ করা হয়েছে।",
+        "triage_alk": "ফলাফল: ক্ষারীয় মাটি (~pH 7.8)।",
+        "triage_acid": "ফলাফল: অম্লীয় মাটি (~pH 5.2)।",
+        "triage_neut": "ফলাফল: নিরপেক্ষ মাটি (~pH 6.5)।",
+        "safemode_info": "সেফ-মোড সক্রিয়: pH 6.5 এবং ১:১০ জলের অনুপাত নির্ধারণ করা হয়েছে।",
         "ph_warn_low": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) চেয়ে কম।",
         "ph_warn_high": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) চেয়ে বেশি।",
-        "ph_match": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) মধ্যে আছে।",
-        "s5": "ধাপ ৫: ভিজ্যুয়াল অ্যাকশন কার্ড",
-        "gen_btn": "⚡ অ্যাকশন কার্ড তৈরি করুন",
-        "no_scrap": "রেসিপি তৈরির আগে ধাপ ১-এ অন্তত একটি বর্জ্য উপাদান নির্বাচন করুন।",
-        "spinner": "Gemini 3.8-এর মাধ্যমে ৩-ধাপের রেসিপি তৈরি হচ্ছে...",
-        "badge_safe": "স্ট্যাটাস ব্যাজ: নিরাপদ এবং সামঞ্জস্যপূর্ণ",
-        "badge_rescue": "স্ট্যাটাস ব্যাজ: রেসকিউ মোড (পার্টিশনিং + ১:১০ বাফার আবশ্যক)"
+        "s5": "৫. অ্যাকশন কার্ড",
+        "gen_btn": "রেসিপি তৈরি করুন",
+        "no_scrap": "রেসিপি তৈরির আগে অন্তত একটি বর্জ্য উপাদান নির্বাচন করুন।",
+        "spinner": "Gemini AI-এর মাধ্যমে রেসিপি তৈরি হচ্ছে...",
+        "badge_safe": "নিরাপদ এবং সামঞ্জস্যপূর্ণ",
+        "badge_rescue": "রেসকিউ মোড (পার্টিশনিং + ১:১০ বাফার আবশ্যক)"
     }
 }
 
@@ -133,6 +127,46 @@ CROPS_DB = {
     "Plantation & Spices": {"Tea": (4.5, 5.5), "Sugarcane": (6.0, 7.5), "Ginger": (5.5, 6.5), "Turmeric": (5.5, 6.5), "Cardamom": (5.0, 6.0)}
 }
 
+CAT_BN = {
+    "Cereals": "দানাশস্য",
+    "Pulses": "ডাল জাতীয়",
+    "Oilseeds": "তৈলবীজ",
+    "Fibre Crops": "আঁশ জাতীয় ফসল",
+    "Vegetables": "সবজি",
+    "Fruits": "ফল",
+    "Plantation & Spices": "বাগান ফসল ও মসলা"
+}
+
+CROP_BN = {
+    "Rice (Paddy)": "ধান", "Wheat": "গম", "Maize": "ভুট্টা", "Millets": "মিলেট", "Barley": "যব",
+    "Lentil (Masur)": "মসুর ডাল", "Chickpea (Gram)": "ছোলা", "Mung Bean": "মুগ ডাল",
+    "Urad (Maskalai)": "মাসকলাই ডাল", "Pigeon Pea": "অড়হর ডাল",
+    "Mustard": "সরিষা", "Groundnut": "চিনাবাদাম", "Sesame": "তিল", "Linseed": "তিসি",
+    "Jute": "পাট", "Cotton": "তুলা", "Hemp": "শণ",
+    "Potato": "আলু", "Tomato": "টমেটো", "Brinjal": "বেগুন", "Bitter Gourd": "করলা",
+    "Bottle Gourd": "লাউ", "Radish": "মূলা", "Carrot": "গাজর", "Cauliflower": "ফুলকপি",
+    "Onion": "পেঁয়াজ", "Cucumber": "শসা", "Beans": "শিম", "Cabbage": "বাঁধাকপি",
+    "Apple": "আপেল", "Banana": "কলা", "Guava": "পেয়ারা", "Mango": "আম", "Litchi": "লিচু", "Papaya": "পেঁপে",
+    "Tea": "চা", "Sugarcane": "আখ", "Ginger": "আদা", "Turmeric": "হলুদ", "Cardamom": "এলাচ"
+}
+
+KITCHEN_BN = {
+    "Vegetable Scraps": "সবজির খোসা ও টুকরো",
+    "Fruit Peels": "ফলের খোসা",
+    "Dry Leaves": "শুকনো পাতা",
+    "Used Tea/Coffee Grounds": "ব্যবহৃত চা/কফির গুঁড়া",
+    "Crushed Eggshells": "গুঁড়া ডিমের খোসা"
+}
+
+def cat_display(name):
+    return CAT_BN.get(name, name) if st.session_state.lang == "বাংলা" else name
+
+def crop_display(name):
+    return CROP_BN.get(name, name) if st.session_state.lang == "বাংলা" else name
+
+def kitchen_display(name):
+    return KITCHEN_BN.get(name, name) if st.session_state.lang == "বাংলা" else name
+
 ALL_CROP_PH = {crop: ph for cat in CROPS_DB.values() for crop, ph in cat.items()}
 
 INCOMPATIBLE_PAIRS = [
@@ -142,19 +176,29 @@ INCOMPATIBLE_PAIRS = [
     ({"Maize", "Tomato"}, "Severe canopy shading and shared Helicoverpa fruitworm/earworm pest pressure.")
 ]
 
-HAZARDOUS_KEYWORDS = [
-    "cooked food", "meat", "chicken", "mutton", "pork", "beef", "fish", "bone",
-    "oil", "ghee", "butter", "plastic", "dairy", "milk", "cheese", "paneer",
-    "curd", "glass", "metal", "battery", "paint", "chemical", "feces", "pet waste"
+INCOMPATIBLE_REASONS_BN = {
+    frozenset({"Tomato", "Potato"}): "উভয় ফসলে লেট ব্লাইট রোগের ঝুঁকি রয়েছে এবং নাইটশেড পরিবারের ফসল হিসেবে পুষ্টির জন্য প্রতিযোগিতা করতে পারে।",
+    frozenset({"Onion", "Beans"}): "পেঁয়াজের শিকড় থেকে নিঃসৃত কিছু পদার্থ শিমের শিকড়ে নাইট্রোজেন স্থিরকারী Rhizobium ব্যাকটেরিয়ার কার্যকলাপে বাধা দিতে পারে।",
+    frozenset({"Tomato", "Cabbage"}): "বাঁধাকপির বেশি নাইট্রোজেন গ্রহণ টমেটোর ফল উৎপাদনে প্রভাব ফেলতে পারে এবং পোকামাকড়ের চাপ বাড়াতে পারে।",
+    frozenset({"Maize", "Tomato"}): "ভুট্টার ঘন ছায়া টমেটোর বৃদ্ধিতে প্রভাব ফেলতে পারে এবং কিছু সাধারণ ক্ষতিকর পোকার চাপ বাড়াতে পারে।"
+}
+
+# Hard blocks vs items needing heat treatment (like cooked bones)
+HARD_HAZARDS = [
+    "cooked food", "raw meat", "fish guts", "pork", "beef", "oil", "ghee", "butter",
+    "plastic", "dairy", "milk", "cheese", "paneer", "curd", "glass",
+    "metal", "battery", "paint", "chemical", "feces", "faeces", "pet waste",
+    "রান্না করা খাবার", "কাঁচা মাংস", "শূকরের মাংস", "গরুর মাংস", "তেল", "ঘি", "মাখন",
+    "প্লাস্টিক", "দুগ্ধজাত পণ্য", "দুধ", "পনির", "ছানা", "দই", "কাচ", "কাঁচ",
+    "ধাতু", "ব্যাটারি", "রং", "রাসায়নিক", "মলমূত্র", "পোষা প্রাণীর বর্জ্য"
 ]
+THERMAL_ITEMS = ["bone", "bones", "chicken", "mutton", "হাড়"]
 
 st.title(t["title"])
 st.caption(t["sub"])
 st.divider()
 
-# ==========================================
-# STEP 1: CROP & BIO-WASTE INPUT LAYER
-# ==========================================
+# Step 1: User Inputs
 st.subheader(t["s1"])
 col1, col2 = st.columns(2)
 
@@ -163,80 +207,88 @@ with col1:
         selected_cats = st.multiselect(
             t["target_cat"],
             list(CROPS_DB.keys()),
-            default=["Vegetables"]
+            default=["Vegetables"],
+            format_func=cat_display,
+            key="target_cat"
         )
-        available_target_crops = [
-            c for cat in selected_cats for c in CROPS_DB[cat].keys()
-        ]
+        available_target_crops = [c for cat in selected_cats for c in CROPS_DB[cat].keys()]
         target_crops = st.multiselect(
             t["target_crops"],
             available_target_crops,
-            default=["Tomato"] if "Tomato" in available_target_crops else []
+            default=["Tomato"] if "Tomato" in available_target_crops else [],
+            format_func=crop_display,
+            key="target_crops"
         )
 
 with col2:
     with st.container(border=True):
-        scrap_cat = st.selectbox(t["scrap_cat"], list(CROPS_DB.keys()), index=4)
-        scrap_crops = st.multiselect(t["scrap_crops"], list(CROPS_DB[scrap_cat].keys()))
+        scrap_cat = st.selectbox(
+            t["scrap_cat"],
+            list(CROPS_DB.keys()),
+            index=4,
+            format_func=cat_display
+        )
+        scrap_crops = st.multiselect(
+            t["scrap_crops"],
+            list(CROPS_DB[scrap_cat].keys()),
+            format_func=crop_display
+        )
         kitchen_materials = st.multiselect(
             t["kitchen_mat"],
-            ["Vegetable Scraps", "Fruit Peels", "Dry Leaves", "Used Tea/Coffee Grounds", "Crushed Eggshells"]
+            list(KITCHEN_BN.keys()),
+            format_func=kitchen_display
         )
         other_material = st.text_input(t["other_in"])
 
-# Collect all selected waste items first so Step 2 knows if input exists
 all_scraps = scrap_crops + kitchen_materials
 if other_material.strip():
     all_scraps.append(other_material.strip())
 
-# ==========================================
-# STEP 2: DETERMINISTIC SAFETY GUARDRAILS
-# ==========================================
-flagged_hazards = [
-    kw for kw in HAZARDOUS_KEYWORDS if kw in other_material.lower()
-]
+raw_input_str = " ".join(all_scraps).lower()
 
-# Only show a banner if a biohazard is actually triggered
+# Step 2: Safety Filter
+flagged_hazards = [kw for kw in HARD_HAZARDS if kw in raw_input_str]
 if flagged_hazards:
     st.subheader(t["s2"])
     st.error(t["safe_err"].format(items=", ".join(flagged_hazards).upper()))
     st.stop()
 
-# ==========================================
-# STEP 3: MULTI-CROP COMPATIBILITY ENGINE
-# ==========================================
-rescue_required = False
+needs_thermal_prep = any(b in raw_input_str for b in THERMAL_ITEMS)
+if needs_thermal_prep:
+    st.warning(f"🔥 {t['bone_warn']}")
 
+# Step 3: Companion & pH Overlap Math
+rescue_required = False
 if not target_crops:
     st.warning(t["no_crop"])
     st.stop()
 
 selected_set = set(target_crops)
-conflicts = [
-    (pair, reason) for pair, reason in INCOMPATIBLE_PAIRS if pair.issubset(selected_set)
-]
+conflicts = [(pair, reason) for pair, reason in INCOMPATIBLE_PAIRS if pair.issubset(selected_set)]
 
 lows = [ALL_CROP_PH[c][0] for c in target_crops]
 highs = [ALL_CROP_PH[c][1] for c in target_crops]
 intersect_low = max(lows)
 intersect_high = min(highs)
-ph_disjoint = intersect_low > intersect_high
+ph_disjoint = intersect_low >= intersect_high
 
-# Only show Step 3 alert boxes if there is a real crop conflict or pH mismatch
 if conflicts or ph_disjoint:
     st.subheader(t["s3"])
     rescue_required = True
     if conflicts:
-        st.error(f"⚠️ {t['conflict_hdr']}")
+        st.error(t["conflict_hdr"])
         for pair, reason in conflicts:
-            st.markdown(f"- **{' + '.join(pair)}:** {reason}")
-        st.warning(f"🛠️ **{t['rescue_msg']}**")
+            pair_label = " + ".join(crop_display(c) for c in pair)
+            display_reason = (
+                INCOMPATIBLE_REASONS_BN.get(frozenset(pair), reason)
+                if st.session_state.lang == "বাংলা" else reason
+            )
+            st.markdown(f"- **{pair_label}:** {display_reason}")
+        st.warning(t["rescue_msg"])
     if ph_disjoint:
         st.error(t["ph_disjoint"].format(low=intersect_low, high=intersect_high))
 
-# ==========================================
-# STEP 4: SOIL CALIBRATION & SAFE-MODE
-# ==========================================
+# Step 4: Soil Calibration
 st.subheader(t["s4"])
 with st.container(border=True):
     mode = st.radio(t["soil_mode"], t["modes"], horizontal=True)
@@ -258,112 +310,124 @@ with st.container(border=True):
             st.warning(t["triage_acid"])
         else:
             soil_pH = 6.5
-            st.caption(f"✓ {t['triage_neut']}")
+            st.caption(t["triage_neut"])
     else:
         soil_pH = 6.5
-        st.caption(f"ℹ️ {t['safemode_info']}")
+        st.caption(t["safemode_info"])
 
-    # Only show a big banner if soil pH is outside the target window
-    soil_out_of_range = False
     if not ph_disjoint:
         if soil_pH < intersect_low:
             st.warning(t["ph_warn_low"].format(ph=soil_pH, low=intersect_low, high=intersect_high))
             rescue_required = True
-            soil_out_of_range = True
         elif soil_pH > intersect_high:
             st.warning(t["ph_warn_high"].format(ph=soil_pH, low=intersect_low, high=intersect_high))
             rescue_required = True
-            soil_out_of_range = True
 
-# ==========================================
-# STEP 5: VISUAL ACTION CARD
-# ==========================================
+# Step 5: Recipe Generation
 st.subheader(t["s5"])
 
+def get_api_key():
+    key = os.getenv("GEMINI_API_KEY", "").strip()
+    if key:
+        return key
+    try:
+        return st.secrets["GEMINI_API_KEY"].strip()
+    except Exception:
+        return ""
+
 @st.cache_data(ttl=3600, show_spinner=False)
-def fetch_ai_recipe(api_key: str, prompt_text: str) -> tuple[str, str]:
-    """Call Gemini with a strict 8-second timeout and instant local fallback."""
-    client = genai.Client(api_key=api_key, http_options={"timeout": 8})
-    # Try active Flash models in order of speed
-    for model_name in ["gemini-2.5-flash", "gemini-2.0-flash"]:
+def generate_recipe(api_key, prompt_text):
+    client = genai.Client(api_key=api_key, http_options={"timeout": 45000})
+    models = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.8-flash"]
+
+    for m in models:
         try:
             res = client.models.generate_content(
-                model=model_name,
+                model=m,
                 contents=prompt_text
             )
             if res and res.text:
-                return res.text, f"Cloud AI ({model_name})"
+                return res.text, f"Gemini AI ({m})"
         except Exception:
             continue
-    return "", "Offline Engine"
 
+    return "", "Local Rules Fallback"
 
 if st.button(t["gen_btn"], type="primary", use_container_width=True):
     if not all_scraps:
         st.warning(t["no_scrap"])
     else:
-        api_key = os.getenv("GEMINI_API_KEY", "").strip()
+        api_key = get_api_key()
         out_lang = "Bengali (বাংলা)" if st.session_state.lang == "বাংলা" else "English"
         rescue_note = (
-            "Include root partitioning and spot-feeding rescue instructions for conflicting crops."
+            "Include root partitioning and spot-feeding instructions."
             if rescue_required else "Crops are compatible for shared bed application."
+        )
+        prep_method = (
+            "User included cooked bones. Formulate a dry bone-char/ash protocol (boil off oil/spices -> roast/char -> crush to powder) instead of liquid steeping."
+            if needs_thermal_prep else
+            "Formulate an aerobic liquid steeping or composting protocol with 1:10 dilution."
         )
 
         prompt = f"""
-        You are an expert organic agronomist. Respond entirely in {out_lang}.
-        Formulate a safe home biofertilizer recipe based on these verified parameters:
-        - Target Crop(s): {', '.join(target_crops)}
-        - Target pH Intersection Window: {intersect_low:.1f} to {intersect_high:.1f}
-        - Calibrated Soil pH: {soil_pH}
-        - Available Bio-Waste Feedstock: {', '.join(all_scraps)}
-        - Co-Planting Note: {rescue_note}
+        Act as an organic agronomist. Reply strictly in {out_lang}.
+        Create a safe home biofertilizer guide for:
+        - Crops: {', '.join(target_crops)} (Target pH: {intersect_low:.1f}-{intersect_high:.1f})
+        - Current Soil pH: {soil_pH}
+        - Waste Inputs: {', '.join(all_scraps)}
+        - Method Note: {prep_method}
+        - Co-planting Note: {rescue_note}
 
-        Format strictly into 3 concise sections with bullet points:
-        ### 1. Clean (Sorting & Prep)
-        - Specific washing, chopping, or sun-drying steps to prevent mold and pathogens.
-        ### 2. Prepare (Formulation & pH Calibration)
-        - Exact method (aerobic composting, liquid steeping, or dried powder), timeline, and how to adjust for the {soil_pH} soil pH.
-        ### 3. Feed (Dosage, 1:10 Dilution & Schedule)
-        - Exact volumetric dosage per plant/pot, mandatory 1:10 water dilution ratio, frequency, and {rescue_note}
+        Use 3 short sections with bullet points:
+        ### 1. Clean (Prep & Sorting)
+        ### 2. Prepare (Formulation & pH Adjustment for pH {soil_pH})
+        ### 3. Feed (Dosage, Dilution & Schedule)
         """
 
         with st.spinner(t["spinner"]):
-            recipe_text, source_label = ("", "Offline Engine")
+            recipe_text, source_label = ("", "Local Rules Fallback")
             if api_key:
-                recipe_text, source_label = fetch_ai_recipe(api_key, prompt)
+                recipe_text, source_label = generate_recipe(api_key, prompt)
 
-            # Instant deterministic fallback if API is offline or times out after 8s
             if not recipe_text:
                 scraps_str = ", ".join(all_scraps)
                 crops_str = ", ".join(target_crops)
-                ph_tip = (
-                    "Add 1 tbsp crushed eggshells per liter to buffer acidic soil."
-                    if soil_pH < 6.0 else
-                    "Add diluted citrus/tea steep to gently lower alkaline soil."
-                    if soil_pH > 7.2 else
-                    "Maintain neutral pH balance with aerated rainwater."
-                )
-                recipe_text = f"""
+                if needs_thermal_prep:
+                    recipe_text = f"""
+### 1. Clean (Degreasing)
+- Boil **{scraps_str}** in plain water for 10–15 minutes to remove cooking oil, salt, and spices, then sun-dry.
+
+### 2. Prepare (Thermal Bone Char)
+- Roast dried bones at high heat (220°C for 45 mins or over coals) until brittle to remove marrow fat.
+- Crush into fine calcium-phosphorus powder. (For soil pH {soil_pH}, {"soak in 1:5 vinegar for 7 days first" if soil_pH > 7.2 else "apply directly to buffer soil"}).
+
+### 3. Feed (Application)
+- Mix **1 tbsp per plant** into topsoil every 30 days for **{crops_str}**. {rescue_note}
+                    """
+                else:
+                    ph_tip = (
+                        "Add 1 tbsp crushed eggshells per liter to buffer acidity."
+                        if soil_pH < 6.0 else
+                        "Add citrus/tea steep to gently lower alkalinity."
+                        if soil_pH > 7.2 else
+                        "Use neutral aerated water."
+                    )
+                    recipe_text = f"""
 ### 1. Clean (Sorting & Prep)
-- Rinse **{scraps_str}** thoroughly to remove surface salts, stickers, and pesticide residues.
-- Chop into <2 cm pieces to maximize microbial surface area and prevent anaerobic rot.
+- Rinse **{scraps_str}** to remove salt or residue and chop into <2 cm pieces.
 
-### 2. Prepare (Formulation & pH Calibration)
-- Submerge chopped feedstock in chlorine-free water at a **1:3 waste-to-water ratio** in a breathable container.
-- Ferment aerobically for **5–7 days**, stirring daily until sweet-earthy fermentation completes.
-- **pH Calibration ({soil_pH}):** {ph_tip}
+### 2. Prepare (Aerobic Steep & pH {soil_pH})
+- Steep in water (1:3 ratio) in a breathable bucket for 5–7 days, stirring daily. {ph_tip}
 
-### 3. Feed (Dosage, 1:10 Dilution & Schedule)
-- Strain liquid concentrate and apply a **mandatory 1:10 dilution** (100 mL concentrate per 1 L water).
-- Apply **250–500 mL per plant** every **10–14 days** at the root zone for **{crops_str}**.
-- **Strategy:** {rescue_note}
-                """
+### 3. Feed (1:10 Dilution)
+- Dilute 1 part liquid with 10 parts water. Apply 250–500 mL per plant every 10–14 days for **{crops_str}**. {rescue_note}
+                    """
 
             with st.container(border=True):
                 if rescue_required:
-                    st.warning(f"🛡️ **{t['badge_rescue']}**")
+                    st.warning(f"**{t['badge_rescue']}**")
                 else:
-                    st.success(f"✅ **{t['badge_safe']}**")
-                st.caption(f"⚡ Source: {source_label}")
+                    st.success(f"**{t['badge_safe']}**")
+                st.caption(f"Engine: {source_label}")
                 st.divider()
                 st.markdown(recipe_text)
