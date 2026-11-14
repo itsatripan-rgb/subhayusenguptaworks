@@ -77,14 +77,14 @@ UI = {
         "kitchen_mat": "রান্নাঘর ও বাগানের উপাদান",
         "other_in": "অন্য কোনো বর্জ্য (যেমন: কলার খোসা, রান্না করা মুরগির হাড়)",
         "s2": "২. জৈব-নিরাপত্তা যাচাই",
-        "safe_err": "জৈব-ঝুঁকি শনাক্ত ({items}): কাঁচা মাংস, দুগ্ধজাত পদার্থ, তেল বা প্লাস্টিক রোগজীবাণু ছড়ায়। এটি সরান।",
+        "safe_err": "জৈব-ঝুঁকি শনাক্ত ({items}): কাঁচা মাংস, দুগ্ধজাত পদার্থ, তেল বা প্লাস্টিক রোগজীবাণু ছড়ায়। এটি সরান।",
         "bone_warn": "তাপীয় প্রক্রিয়াকরণ প্রয়োজন: রান্না করা হাড় সরাসরি জলে পচাবেন না। ১০ মিনিট ফুটিয়ে তেল/মশলা দূর করুন -> আগুনে পুড়িয়ে ভস্ম/গুঁড়ো করুন।",
         "s3": "৩. মাল্টি-ক্রপ সামঞ্জস্যতা ও pH",
         "no_crop": "অনুগ্রহ করে ধাপ ১-এ অন্তত একটি ফসল নির্বাচন করুন।",
         "conflict_hdr": "ফসলের মধ্যে বিরোধপূর্ণ সম্পর্ক শনাক্ত!",
         "rescue_msg": "বিকল্প কৌশল: আলাদা বেড বা গ্রো-ব্যাগ ব্যবহার করুন এবং আলাদাভাবে সার দিন।",
         "ph_disjoint": "অসামঞ্জস্যপূর্ণ মাটির pH! ফসলগুলোর pH চাহিদা মেলে না ({low:.1f} বনাম {high:.1f})। আলাদা পাত্রে চাষ করুন।",
-        "s4": "৪. মাটির pH নির্ণয়",
+        "s4": "৪. মাটির pH নির্ণয়",
         "soil_mode": "pH নির্ধারণের পদ্ধতি",
         "modes": [
             "পরীক্ষিত মাটির pH (জানা মান)",
@@ -95,12 +95,12 @@ UI = {
         "vinegar_q": "১. মাটিতে ভিনেগার দিলে কি বুদবুদ ওঠে?",
         "soda_q": "২. মাটিতে বেকিং সোডা ও জল দিলে কি বুদবুদ ওঠে?",
         "yes_no": ["না (No)", "হ্যাঁ (Yes)"],
-        "triage_alk": "ফলাফল: ক্ষারীয় মাটি (~pH 7.8)।",
-        "triage_acid": "ফলাফল: অম্লীয় মাটি (~pH 5.2)।",
+        "triage_alk": "ফলাফল: ক্ষারীয় মাটি (~pH 7.8)।",
+        "triage_acid": "ফলাফল: অম্লীয় মাটি (~pH 5.2)।",
         "triage_neut": "ফলাফল: নিরপেক্ষ মাটি (~pH 6.5)।",
-        "safemode_info": "সেফ-মোড সক্রিয়: pH 6.5 এবং ১:১০ জলের অনুপাত নির্ধারণ করা হয়েছে।",
-        "ph_warn_low": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) চেয়ে কম।",
-        "ph_warn_high": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) চেয়ে বেশি।",
+        "safemode_info": "সেফ-মোড সক্রিয়: pH 6.5 এবং ১:১০ জলের অনুপাত নির্ধারণ করা হয়েছে।",
+        "ph_warn_low": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) চেয়ে কম।",
+        "ph_warn_high": "মাটির pH ({ph}) নির্ধারিত সীমার ({low:.1f}–{high:.1f}) চেয়ে বেশি।",
         "s5": "৫. অ্যাকশন কার্ড",
         "gen_btn": "রেসিপি তৈরি করুন",
         "no_scrap": "রেসিপি তৈরির আগে অন্তত একটি বর্জ্য উপাদান নির্বাচন করুন।",
@@ -124,7 +124,17 @@ CROPS_DB = {
         "Cucumber": (5.8, 6.8), "Beans": (6.0, 6.8), "Cabbage": (6.2, 7.2)
     },
     "Fruits": {"Apple": (5.8, 6.8), "Banana": (5.5, 6.5), "Guava": (5.0, 7.0), "Mango": (5.5, 7.0), "Litchi": (5.5, 6.5), "Papaya": (6.0, 6.8)},
-    "Plantation & Spices": {"Tea": (4.5, 5.5), "Sugarcane": (6.0, 7.5), "Ginger": (5.5, 6.5), "Turmeric": (5.5, 6.5), "Cardamom": (5.0, 6.0)}
+    "Plantation & Spices": {"Tea": (4.5, 5.5), "Sugarcane": (6.0, 7.5), "Ginger": (5.5, 6.5), "Turmeric": (5.5, 6.5), "Cardamom": (5.0, 6.0)},
+    "Flowers": {
+        "Rose": (6.0, 6.5), "Sunflower": (6.0, 7.5), "Marigold": (6.0, 7.0),
+        "Madagascar Periwinkle": (5.5, 7.0), "Arabian Jasmine": (6.0, 7.5)
+    },
+    "House Plants": {
+        "Snake Plant": (5.5, 7.5), "Money Plant": (6.0, 7.5), "Areca Palm": (6.0, 7.5),
+        "Aloe Vera": (6.0, 8.0), "Peace Lily": (5.8, 6.5), "Spider Plant": (6.0, 7.2),
+        "Monstera": (5.5, 7.0), "Ferns": (5.0, 6.5), "Rubber Plant": (5.5, 7.0),
+        "Lucky Bamboo": (5.5, 6.5), "Fiddle Leaf Fig": (6.0, 7.0)
+    }
 }
 
 CAT_BN = {
@@ -134,7 +144,9 @@ CAT_BN = {
     "Fibre Crops": "আঁশ জাতীয় ফসল",
     "Vegetables": "সবজি",
     "Fruits": "ফল",
-    "Plantation & Spices": "বাগান ফসল ও মসলা"
+    "Plantation & Spices": "বাগান ফসল ও মসলা",
+    "Flowers": "ফুল",
+    "House Plants": "ঘরের গাছপালা"
 }
 
 CROP_BN = {
@@ -147,7 +159,13 @@ CROP_BN = {
     "Bottle Gourd": "লাউ", "Radish": "মূলা", "Carrot": "গাজর", "Cauliflower": "ফুলকপি",
     "Onion": "পেঁয়াজ", "Cucumber": "শসা", "Beans": "শিম", "Cabbage": "বাঁধাকপি",
     "Apple": "আপেল", "Banana": "কলা", "Guava": "পেয়ারা", "Mango": "আম", "Litchi": "লিচু", "Papaya": "পেঁপে",
-    "Tea": "চা", "Sugarcane": "আখ", "Ginger": "আদা", "Turmeric": "হলুদ", "Cardamom": "এলাচ"
+    "Tea": "চা", "Sugarcane": "আখ", "Ginger": "আদা", "Turmeric": "হলুদ", "Cardamom": "এলাচ",
+    "Rose": "গোলাপ", "Sunflower": "সূর্যমুখী", "Marigold": "গাঁদা",
+    "Madagascar Periwinkle": "নয়নতারা", "Arabian Jasmine": "আরবী জুঁই",
+    "Snake Plant": "স্নেক প্ল্যান্ট", "Money Plant": "মানি প্ল্যান্ট", "Areca Palm": "এরিকা পাম",
+    "Aloe Vera": "ঘৃতকুমারী", "Peace Lily": "পিস লিলি", "Spider Plant": "স্পাইডার প্ল্যান্ট",
+    "Monstera": "মনস্টেরা", "Ferns": "ফার্ন", "Rubber Plant": "রাবার প্ল্যান্ট",
+    "Lucky Bamboo": "লাকি ব্যাম্বু", "Fiddle Leaf Fig": "ফিডল লিফ ফিগ"
 }
 
 KITCHEN_BN = {
@@ -170,18 +188,27 @@ def kitchen_display(name):
 ALL_CROP_PH = {crop: ph for cat in CROPS_DB.values() for crop, ph in cat.items()}
 
 INCOMPATIBLE_PAIRS = [
-    ({"Tomato", "Potato"}, "Both share late blight (Phytophthora infestans) and compete heavily for nightshade nutrients."),
-    ({"Onion", "Beans"}, "Onions release root exudates that inhibit nitrogen-fixing Rhizobium bacteria on bean roots."),
-    ({"Tomato", "Cabbage"}, "Heavy brassica nitrogen uptake stunts tomato fruiting and increases pest pressure."),
-    ({"Maize", "Tomato"}, "Severe canopy shading and shared Helicoverpa fruitworm/earworm pest pressure.")
+    (
+        {"Tomato", "Potato"},
+        "Both share late blight (Phytophthora infestans) and compete heavily for nightshade nutrients.",
+        "উভয় ফসলে লেট ব্লাইট রোগের ঝুঁকি রয়েছে এবং নাইটশেড পরিবারের ফসল হিসেবে পুষ্টির জন্য প্রতিযোগিতা করতে পারে।"
+    ),
+    (
+        {"Onion", "Beans"},
+        "Onions release root exudates that inhibit nitrogen-fixing Rhizobium bacteria on bean roots.",
+        "পেঁয়াজের শিকড় থেকে নিঃসৃত কিছু পদার্থ শিমের শিকড়ে নাইট্রোজেন স্থিরকারী Rhizobium ব্যাকটেরিয়ার কার্যকলাপে বাধা দিতে পারে।"
+    ),
+    (
+        {"Tomato", "Cabbage"},
+        "Heavy brassica nitrogen uptake stunts tomato fruiting and increases pest pressure.",
+        "বাঁধাকপির বেশি নাইট্রোজেন গ্রহণ টমেটোর ফল উৎপাদনে প্রভাব ফেলতে পারে এবং পোকামাকড়ের চাপ বাড়াতে পারে।"
+    ),
+    (
+        {"Maize", "Tomato"},
+        "Severe canopy shading and shared Helicoverpa fruitworm/earworm pest pressure.",
+        "ভুট্টার ঘন ছায়া টমেটোর বৃদ্ধিতে প্রভাব ফেলতে পারে এবং কিছু সাধারণ ক্ষতিকর পোকার চাপ বাড়াতে পারে।"
+    )
 ]
-
-INCOMPATIBLE_REASONS_BN = {
-    frozenset({"Tomato", "Potato"}): "উভয় ফসলে লেট ব্লাইট রোগের ঝুঁকি রয়েছে এবং নাইটশেড পরিবারের ফসল হিসেবে পুষ্টির জন্য প্রতিযোগিতা করতে পারে।",
-    frozenset({"Onion", "Beans"}): "পেঁয়াজের শিকড় থেকে নিঃসৃত কিছু পদার্থ শিমের শিকড়ে নাইট্রোজেন স্থিরকারী Rhizobium ব্যাকটেরিয়ার কার্যকলাপে বাধা দিতে পারে।",
-    frozenset({"Tomato", "Cabbage"}): "বাঁধাকপির বেশি নাইট্রোজেন গ্রহণ টমেটোর ফল উৎপাদনে প্রভাব ফেলতে পারে এবং পোকামাকড়ের চাপ বাড়াতে পারে।",
-    frozenset({"Maize", "Tomato"}): "ভুট্টার ঘন ছায়া টমেটোর বৃদ্ধিতে প্রভাব ফেলতে পারে এবং কিছু সাধারণ ক্ষতিকর পোকার চাপ বাড়াতে পারে।"
-}
 
 # Hard blocks vs items needing heat treatment (like cooked bones)
 HARD_HAZARDS = [
@@ -190,9 +217,17 @@ HARD_HAZARDS = [
     "metal", "battery", "paint", "chemical", "feces", "faeces", "pet waste",
     "রান্না করা খাবার", "কাঁচা মাংস", "শূকরের মাংস", "গরুর মাংস", "তেল", "ঘি", "মাখন",
     "প্লাস্টিক", "দুগ্ধজাত পণ্য", "দুধ", "পনির", "ছানা", "দই", "কাচ", "কাঁচ",
-    "ধাতু", "ব্যাটারি", "রং", "রাসায়নিক", "মলমূত্র", "পোষা প্রাণীর বর্জ্য"
+    "ধাতু", "ব্যাটারি", "রাসায়নিক", "মলমূত্র", "পোষা প্রাণীর বর্জ্য"
 ]
 THERMAL_ITEMS = ["bone", "bones", "chicken", "mutton", "হাড়"]
+
+def matches_keyword(text, kw_list):
+    found = []
+    for kw in kw_list:
+        pattern = rf"(?<!\w){re.escape(kw)}(?!\w)"
+        if re.search(pattern, text):
+            found.append(kw)
+    return found
 
 st.title(t["title"])
 st.caption(t["sub"])
@@ -222,9 +257,10 @@ with col1:
 
 with col2:
     with st.container(border=True):
+        residue_cats = [k for k in CROPS_DB.keys() if k not in ("Flowers", "House Plants")]
         scrap_cat = st.selectbox(
             t["scrap_cat"],
-            list(CROPS_DB.keys()),
+            residue_cats,
             index=4,
             format_func=cat_display
         )
@@ -247,13 +283,22 @@ if other_material.strip():
 raw_input_str = " ".join(all_scraps).lower()
 
 # Step 2: Safety Filter
-flagged_hazards = [kw for kw in HARD_HAZARDS if kw in raw_input_str]
+flagged_hazards = []
+for kw in HARD_HAZARDS:
+    if kw in raw_input_str: `
+        flagged_hazards.append(kw)
+
 if flagged_hazards:
     st.subheader(t["s2"])
     st.error(t["safe_err"].format(items=", ".join(flagged_hazards).upper()))
     st.stop()
 
-needs_thermal_prep = any(b in raw_input_str for b in THERMAL_ITEMS)
+needs_thermal_prep = False
+for item in THERMAL_ITEMS:
+    if item in raw_input_str:
+        needs_thermal_prep = True
+        break
+
 if needs_thermal_prep:
     st.warning(f"🔥 {t['bone_warn']}")
 
@@ -336,7 +381,7 @@ def get_api_key():
         return ""
 
 @st.cache_data(ttl=3600, show_spinner=False)
-def generate_recipe(api_key, prompt_text):
+def _call_gemini_cached(api_key, prompt_text):
     client = genai.Client(api_key=api_key, http_options={"timeout": 45000})
     models = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.8-flash"]
 
@@ -351,14 +396,21 @@ def generate_recipe(api_key, prompt_text):
         except Exception:
             continue
 
-    return "", "Local Rules Fallback"
+    raise RuntimeError("All Gemini models unreachable")
+
+def generate_recipe(api_key, prompt_text):
+    try:
+        return _call_gemini_cached(api_key, prompt_text)
+    except Exception:
+        return "", "Local Rules Fallback"
 
 if st.button(t["gen_btn"], type="primary", use_container_width=True):
     if not all_scraps:
         st.warning(t["no_scrap"])
     else:
         api_key = get_api_key()
-        out_lang = "Bengali (বাংলা)" if st.session_state.lang == "বাংলা" else "English"
+        is_bn = st.session_state.lang == "বাংলা"
+        out_lang = "Bengali (বাংলা)" if is_bn else "English"
         rescue_note = (
             "Include root partitioning and spot-feeding instructions."
             if rescue_required else "Crops are compatible for shared bed application."
@@ -390,10 +442,47 @@ if st.button(t["gen_btn"], type="primary", use_container_width=True):
                 recipe_text, source_label = generate_recipe(api_key, prompt)
 
             if not recipe_text:
-                scraps_str = ", ".join(all_scraps)
-                crops_str = ", ".join(target_crops)
-                if needs_thermal_prep:
-                    recipe_text = f"""
+                scraps_str = ", ".join(kitchen_display(s) if s in KITCHEN_BN else crop_display(s) for s in all_scraps)
+                crops_str = ", ".join(crop_display(c) for c in target_crops)
+
+                if is_bn:
+                    rescue_bn = (
+                        "আলাদা পাত্রে বা গ্রো-ব্যাগে চাষ করুন এবং প্রতিটি গাছের গোড়ায় আলাদাভাবে সার দিন।"
+                        if rescue_required else "ফসলগুলো একই বেডে সহ-চাষের জন্য উপযুক্ত।"
+                    )
+                    if needs_thermal_prep:
+                        recipe_text = f"""
+### ১. পরিষ্কার ও প্রস্তুতি (Clean)
+- **{scraps_str}** সাধারণ জলে ১০–১৫ মিনিট ফুটিয়ে তেল, লবণ ও মশলা দূর করুন, তারপর রোদে ভালো করে শুকিয়ে নিন।
+
+### ২. প্রস্তুত প্রণালী ও pH সমন্বয় (Prepare — pH {soil_pH})
+- শুকনো হাড়গুলো উচ্চ তাপে (২২০°C তাপমাত্রায় ৪৫ মিনিট বা কয়লার আগুনে) পুড়িয়ে ভঙ্গুর করে নিন যাতে ভেতরের চর্বি নষ্ট হয়ে যায়।
+- হামানদিস্তায় পিষে মিহি ক্যালসিয়াম-ফসফরাস গুঁড়ো তৈরি করুন। (মাটির pH {soil_pH} এর জন্য: {"প্রয়োগের আগে ১:৫ অনুপাতে ভিনেগারে ৭ দিন ভিজিয়ে রাখুন" if soil_pH > 7.2 else "সরাসরি মাটির উপরিভাগে মেশান"})।
+
+### ৩. প্রয়োগ বিধি ও মাত্রা (Feed)
+- **{crops_str}** গাছের জন্য প্রতি ৩০ দিন অন্তর **প্রতি গাছে ১ টেবিল চামচ** হাড়ের গুঁড়ো মাটির উপরিভাগে মিশিয়ে জল দিন। {rescue_bn}
+                        """
+                    else:
+                        ph_tip_bn = (
+                            "অম্লতা কমাতে প্রতি লিটারে ১ টেবিল চামচ গুঁড়ো ডিমের খোসা মেশান।"
+                            if soil_pH < 6.0 else
+                            "ক্ষারত্ব কমাতে সামান্য লেবুর খোসা বা চায়ের লিকার মেশান।"
+                            if soil_pH > 7.2 else
+                            "সাধারণ বায়ুচলাচলযুক্ত জল ব্যবহার করুন।"
+                        )
+                        recipe_text = f"""
+### ১. পরিষ্কার ও বাছাই (Clean)
+- **{scraps_str}** ভালোভাবে ধুয়ে লবণ বা ময়লা দূর করুন এবং ২ সেমি-এর ছোট টুকরো করে কেটে নিন।
+
+### ২. প্রস্তুত প্রণালী ও pH সমন্বয় (Prepare — pH {soil_pH})
+- ১:৩ অনুপাতে জলে ভিজিয়ে ঢাকনাযুক্ত পাত্রে ৫–৭ দিন রাখুন এবং প্রতিদিন একবার নাড়ুন। {ph_tip_bn}
+
+### ৩. প্রয়োগ বিধি ও ১:১০ অনুপাত (Feed)
+- ১ ভাগ তরল সারের সাথে ১০ ভাগ জল মেশান। **{crops_str}** গাছের গোড়ায় প্রতি ১০–১৪ দিন অন্তর ২৫০–৫০০ মিলি করে প্রয়োগ করুন। {rescue_bn}
+                        """
+                else:
+                    if needs_thermal_prep:
+                        recipe_text = f"""
 ### 1. Clean (Degreasing)
 - Boil **{scraps_str}** in plain water for 10–15 minutes to remove cooking oil, salt, and spices, then sun-dry.
 
@@ -403,16 +492,16 @@ if st.button(t["gen_btn"], type="primary", use_container_width=True):
 
 ### 3. Feed (Application)
 - Mix **1 tbsp per plant** into topsoil every 30 days for **{crops_str}**. {rescue_note}
-                    """
-                else:
-                    ph_tip = (
-                        "Add 1 tbsp crushed eggshells per liter to buffer acidity."
-                        if soil_pH < 6.0 else
-                        "Add citrus/tea steep to gently lower alkalinity."
-                        if soil_pH > 7.2 else
-                        "Use neutral aerated water."
-                    )
-                    recipe_text = f"""
+                        """
+                    else:
+                        ph_tip = (
+                            "Add 1 tbsp crushed eggshells per liter to buffer acidity."
+                            if soil_pH < 6.0 else
+                            "Add citrus/tea steep to gently lower alkalinity."
+                            if soil_pH > 7.2 else
+                            "Use neutral aerated water."
+                        )
+                        recipe_text = f"""
 ### 1. Clean (Sorting & Prep)
 - Rinse **{scraps_str}** to remove salt or residue and chop into <2 cm pieces.
 
@@ -421,7 +510,7 @@ if st.button(t["gen_btn"], type="primary", use_container_width=True):
 
 ### 3. Feed (1:10 Dilution)
 - Dilute 1 part liquid with 10 parts water. Apply 250–500 mL per plant every 10–14 days for **{crops_str}**. {rescue_note}
-                    """
+                        """
 
             with st.container(border=True):
                 if rescue_required:
