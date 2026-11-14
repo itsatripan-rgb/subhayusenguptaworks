@@ -33,7 +33,7 @@ UI = {
         "scrap_cat": "Category of ingredients",
         "scrap_crops": "Select ingredients available",
         "kitchen_mat": "Kitchen & Garden Waste",
-        other_material:= st.text_input(t["other_in"], max_chars=50, placeholder="e.g., banana peel,egg shells"),
+        "other_in": "Other waste items (e.g., banana peel, egg shells)",
         "s2": "2. Deterministic Safety Guardrails",
         "safe_err": "BIOHAZARD BLOCKED ({items}): Raw animal waste, dairy, oils, and synthetics breed pathogens. Remove to continue.",
         "bone_warn": "Thermal Pre-Processing Needed: Cooked bones detected. Do not steep in water. Boil off oil/salt -> char at high heat -> crush to powder.",
