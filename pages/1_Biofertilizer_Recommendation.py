@@ -285,7 +285,7 @@ raw_input_str = " ".join(all_scraps).lower()
 # Step 2: Safety Filter
 flagged_hazards = []
 for kw in HARD_HAZARDS:
-    if kw in raw_input_str: `
+    if kw in raw_input_str: 
         flagged_hazards.append(kw)
 
 if flagged_hazards:
