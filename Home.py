@@ -28,7 +28,7 @@ with st.sidebar:
 CONTENT = {
     "English": {
         "title": "🌱 EcoRoot AI",
-        "sub": "Turning Agricultural & Kitchen Waste into Sustainable Solutions",
+        "sub": "From scraps to sprouts",
         "feat_header": "FEATURES AVAILABLE",
         "features": [
             "🛡️ Smart Ingredient Selection & Biohazard Screening",
