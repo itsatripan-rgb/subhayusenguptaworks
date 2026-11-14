@@ -309,7 +309,11 @@ if not target_crops:
     st.stop()
 
 selected_set = set(target_crops)
-conflicts = [(pair, reason) for pair, reason in INCOMPATIBLE_PAIRS if pair.issubset(selected_set)]
+selected_set = set(target_crops)
+conflicts = []
+for pair, reason_en, reason_bn in INCOMPATIBLE_PAIRS:
+    if pair.issubset(selected_set):
+        conflicts.append((pair, reason_en, reason_bn))
 
 lows = [ALL_CROP_PH[c][0] for c in target_crops]
 highs = [ALL_CROP_PH[c][1] for c in target_crops]
@@ -322,17 +326,14 @@ if conflicts or ph_disjoint:
     rescue_required = True
     if conflicts:
         st.error(t["conflict_hdr"])
-        for pair, reason in conflicts:
+        for pair, reason_en, reason_bn in conflicts:
             pair_label = " + ".join(crop_display(c) for c in pair)
-            display_reason = (
-                INCOMPATIBLE_REASONS_BN.get(frozenset(pair), reason)
-                if st.session_state.lang == "বাংলা" else reason
-            )
+            display_reason = reason_bn if st.session_state.lang == "বাংলা" else reason_en
             st.markdown(f"- **{pair_label}:** {display_reason}")
         st.warning(t["rescue_msg"])
     if ph_disjoint:
         st.error(t["ph_disjoint"].format(low=intersect_low, high=intersect_high))
-
+        
 # Step 4: Soil Calibration
 st.subheader(t["s4"])
 with st.container(border=True):
