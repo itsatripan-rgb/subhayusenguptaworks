@@ -28,12 +28,12 @@ UI = {
         "title": "🌱 Biofertilizer & Crop Compatibility Engine",
         "sub": "Deterministic Soil & Safety Screening + Gemini AI Formulation",
         "s1": "1. Crops & Bio-Waste Inputs",
-        "target_cat": "Crop Category",
+        "target_cat": "TargetCrop Category",
         "target_crops": "Select Target Crop(s) (Pick 2+ to check companion planting)",
-        "scrap_cat": "Farm Residue Category (Optional)",
-        "scrap_crops": "Select Crop Residue",
+        "scrap_cat": "Category of ingredients",
+        "scrap_crops": "Select ingredients available",
         "kitchen_mat": "Kitchen & Garden Waste",
-        "other_in": "Other waste items (e.g., banana peel, cooked chicken bones, tea leaves)",
+        other_material = st.text_input(t["other_in"], max_chars=300, placeholder="e.g., banana peel,egg shells"),
         "s2": "2. Deterministic Safety Guardrails",
         "safe_err": "BIOHAZARD BLOCKED ({items}): Raw animal waste, dairy, oils, and synthetics breed pathogens. Remove to continue.",
         "bone_warn": "Thermal Pre-Processing Needed: Cooked bones detected. Do not steep in water. Boil off oil/salt -> char at high heat -> crush to powder.",
@@ -146,7 +146,7 @@ CAT_BN = {
     "Fruits": "ফল",
     "Plantation & Spices": "বাগান ফসল ও মসলা",
     "Flowers": "ফুল",
-    "House Plants": "ঘরের গাছপালা"
+    "House Plants": "গৃহস্থালি উদ্ভিদ"
 }
 
 CROP_BN = {
@@ -163,7 +163,7 @@ CROP_BN = {
     "Rose": "গোলাপ", "Sunflower": "সূর্যমুখী", "Marigold": "গাঁদা",
     "Madagascar Periwinkle": "নয়নতারা", "Arabian Jasmine": "আরবী জুঁই",
     "Snake Plant": "স্নেক প্ল্যান্ট", "Money Plant": "মানি প্ল্যান্ট", "Areca Palm": "এরিকা পাম",
-    "Aloe Vera": "ঘৃতকুমারী", "Peace Lily": "পিস লিলি", "Spider Plant": "স্পাইডার প্ল্যান্ট",
+    "Aloe Vera": "অলিয়া ভেরা", "Peace Lily": "পিস লিলি", "Spider Plant": "স্পাইডার প্ল্যান্ট",
     "Monstera": "মনস্টেরা", "Ferns": "ফার্ন", "Rubber Plant": "রাবার প্ল্যান্ট",
     "Lucky Bamboo": "লাকি ব্যাম্বু", "Fiddle Leaf Fig": "ফিডল লিফ ফিগ"
 }
