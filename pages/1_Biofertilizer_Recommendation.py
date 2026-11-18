@@ -163,7 +163,7 @@ CROP_BN = {
     "Rose": "গোলাপ", "Sunflower": "সূর্যমুখী", "Marigold": "গাঁদা",
     "Madagascar Periwinkle": "নয়নতারা", "Arabian Jasmine": "আরবী জুঁই",
     "Snake Plant": "স্নেক প্ল্যান্ট", "Money Plant": "মানি প্ল্যান্ট", "Areca Palm": "এরিকা পাম",
-    "Aloe Vera": "অলিয়া ভেরা", "Peace Lily": "পিস লিলি", "Spider Plant": "স্পাইডার প্ল্যান্ট",
+    "Aloe Vera": "ঘৃতকুমারী", "Peace Lily": "পিস লিলি", "Spider Plant": "স্পাইডার প্ল্যান্ট",
     "Monstera": "মনস্টেরা", "Ferns": "ফার্ন", "Rubber Plant": "রাবার প্ল্যান্ট",
     "Lucky Bamboo": "লাকি ব্যাম্বু", "Fiddle Leaf Fig": "ফিডল লিফ ফিগ"
 }
@@ -212,10 +212,10 @@ INCOMPATIBLE_PAIRS = [
 
 # Hard blocks vs items needing heat treatment (like cooked bones)
 HARD_HAZARDS = [
-    "cooked food", "raw meat", "fish guts", "pork", "beef", "oil", "ghee", "butter",
+    "cooked food", "meat", "fish", "pork", "beef", "oil", "ghee", "butter",
     "plastic", "dairy", "milk", "cheese", "paneer", "curd", "glass",
     "metal", "battery", "paint", "chemical", "feces", "faeces", "pet waste",
-    "রান্না করা খাবার", "কাঁচা মাংস", "শূকরের মাংস", "গরুর মাংস", "তেল", "ঘি", "মাখন",
+    "রান্না করা খাবার", "মাংস", "শূকরের মাংস", "গরুর মাংস", "তেল", "ঘি", "মাখন",
     "প্লাস্টিক", "দুগ্ধজাত পণ্য", "দুধ", "পনির", "ছানা", "দই", "কাচ", "কাঁচ",
     "ধাতু", "ব্যাটারি", "রাসায়নিক", "মলমূত্র", "পোষা প্রাণীর বর্জ্য"
 ]
